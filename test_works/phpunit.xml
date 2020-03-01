@@ -15,6 +15,36 @@
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">./app</directory>
+            <!-- 除外リストを追加する -->
+            <exclude>
+                <directory suffix=".php">./app/Console</directory>
+                <directory suffix=".php">./app/Exceptions</directory>
+
+                <!-- コントローラ -->
+                <file>./app/Http/Controllers/Controller.php</file>
+                <file>./app/Http/Controllers/Controller.php</file>
+                <file>./app/Http/Controllers/FooController.php</file>
+                <file>./app/Http/Controllers/Auth/ConfirmPasswordController.php</file>
+                <file>./app/Http/Controllers/Auth/ForgotPasswordController.php</file>
+                <file>./app/Http/Controllers/Auth/LoginController.php</file>
+                <file>./app/Http/Controllers/Auth/RegisterController.php</file>
+                <file>./app/Http/Controllers/Auth/ResetPasswordController.php</file>
+                <file>./app/Http/Controllers/Auth/VerificationController.php</file>
+
+                <!-- ミドルウェア -->
+                <file>./app/Http/Middleware/Authenticate.php</file>
+                <file>./app/Http/Middleware/CheckForMaintenanceMode.php</file>
+                <file>./app/Http/Middleware/EncryptCookies.php</file>
+                <file>./app/Http/Middleware/TrimStrings.php</file>
+                <file>./app/Http/Middleware/TrustProxies.php</file>
+                <file>./app/Http/Middleware/VerifyCsrfToken.php</file>
+                <file>./app/Http/Middleware/RedirectIfAuthenticated.php</file>
+
+                <!-- サービスプロバイダ -->
+                <file>./app/Providers/BroadcastServiceProvider.php</file>
+                <file>./app/Providers/EventServiceProvider.php</file>
+                <file>./app/Providers/RouteServiceProvider.php</file>
+            </exclude>
         </whitelist>
     </filter>
     <php>

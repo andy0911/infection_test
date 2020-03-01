@@ -2,13 +2,17 @@
     "timeout": 10,
     "source": {
         "directories": [
-            "app"
+            "./"
+        ],
+        "excludes": [
+            "vendor",
+            "database"
         ]
     },
     "logs": {
         "text": "infection.log"
     },
     "mutators": {
-        "@default": true
+        "@default": false
     }
 }
