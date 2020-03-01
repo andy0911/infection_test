@@ -1,0 +1,423 @@
+Escaped mutants:
+================
+
+
+1) /data/webapp/app/Console/Kernel.php:36    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+      */
+     protected function commands()
+     {
+-        $this->load(__DIR__ . '/Commands');
++        
+         require base_path('routes/console.php');
+     }
+ }
+
+
+2) /data/webapp/app/Providers/AuthServiceProvider.php:26    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+      */
+     public function boot()
+     {
+-        $this->registerPolicies();
++        
+         //
+     }
+ }
+
+
+3) /data/webapp/app/Providers/EventServiceProvider.php:30    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+      */
+     public function boot()
+     {
+-        parent::boot();
++        
+         //
+     }
+ }
+
+
+4) /data/webapp/app/Providers/RouteServiceProvider.php:45    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+      */
+     public function map()
+     {
+-        $this->mapApiRoutes();
++        
+         $this->mapWebRoutes();
+         //
+     }
+
+
+5) /data/webapp/app/Providers/RouteServiceProvider.php:59    [M] ProtectedVisibility
+
+--- Original
++++ New
+@@ @@
+      *
+      * @return void
+      */
+-    protected function mapWebRoutes()
++    private function mapWebRoutes()
+     {
+         Route::middleware('web')->namespace($this->namespace)->group(base_path('routes/web.php'));
+     }
+
+
+6) /data/webapp/app/Providers/RouteServiceProvider.php:73    [M] ProtectedVisibility
+
+--- Original
++++ New
+@@ @@
+      *
+      * @return void
+      */
+-    protected function mapApiRoutes()
++    private function mapApiRoutes()
+     {
+         Route::prefix('api')->middleware('api')->namespace($this->namespace)->group(base_path('routes/api.php'));
+     }
+ }
+
+7) /data/webapp/app/Providers/RouteServiceProvider.php:75    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+      */
+     protected function mapApiRoutes()
+     {
+-        Route::prefix('api')->middleware('api')->namespace($this->namespace)->group(base_path('routes/api.php'));
++        
+     }
+ }
+
+Timed Out mutants:
+==================
+
+Not Covered mutants:
+====================
+
+
+1) /data/webapp/app/Exceptions/Handler.php:39    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+      */
+     public function report(Exception $exception)
+     {
+-        parent::report($exception);
++        
+     }
+     /**
+      * Render an exception into an HTTP response.
+
+
+2) /data/webapp/app/Http/Controllers/Auth/ConfirmPasswordController.php:38    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+      */
+     public function __construct()
+     {
+-        $this->middleware('auth');
++        
+     }
+ }
+
+
+3) /data/webapp/app/Http/Controllers/Auth/LoginController.php:38    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+      */
+     public function __construct()
+     {
+-        $this->middleware('guest')->except('logout');
++        
+     }
+ }
+
+
+4) /data/webapp/app/Http/Controllers/Auth/RegisterController.php:41    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+      */
+     public function __construct()
+     {
+-        $this->middleware('guest');
++        
+     }
+     /**
+      * Get a validator for an incoming registration request.
+
+
+5) /data/webapp/app/Http/Controllers/Auth/RegisterController.php:50    [M] ProtectedVisibility
+
+--- Original
++++ New
+@@ @@
+      * @param  array  $data
+      * @return \Illuminate\Contracts\Validation\Validator
+      */
+-    protected function validator(array $data)
++    private function validator(array $data)
+     {
+         return Validator::make($data, ['name' => ['required', 'string', 'max:255'], 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'], 'password' => ['required', 'string', 'min:8', 'confirmed']]);
+     }
+
+
+6) /data/webapp/app/Http/Controllers/Auth/RegisterController.php:52    [M] ArrayItemRemoval
+
+--- Original
++++ New
+@@ @@
+      */
+     protected function validator(array $data)
+     {
+-        return Validator::make($data, ['name' => ['required', 'string', 'max:255'], 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'], 'password' => ['required', 'string', 'min:8', 'confirmed']]);
++        return Validator::make($data, ['email' => ['required', 'string', 'email', 'max:255', 'unique:users'], 'password' => ['required', 'string', 'min:8', 'confirmed']]);
+     }
+     /**
+      * Create a new user instance after a valid registration.
+
+
+7) /data/webapp/app/Http/Controllers/Auth/RegisterController.php:53    [M] ArrayItemRemoval
+
+--- Original
++++ New
+@@ @@
+      */
+     protected function validator(array $data)
+     {
+-        return Validator::make($data, ['name' => ['required', 'string', 'max:255'], 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'], 'password' => ['required', 'string', 'min:8', 'confirmed']]);
++        return Validator::make($data, ['name' => ['string', 'max:255'], 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'], 'password' => ['required', 'string', 'min:8', 'confirmed']]);
+     }
+     /**
+      * Create a new user instance after a valid registration.
+
+
+8) /data/webapp/app/Http/Controllers/Auth/RegisterController.php:54    [M] ArrayItemRemoval
+
+--- Original
++++ New
+@@ @@
+      */
+     protected function validator(array $data)
+     {
+-        return Validator::make($data, ['name' => ['required', 'string', 'max:255'], 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'], 'password' => ['required', 'string', 'min:8', 'confirmed']]);
++        return Validator::make($data, ['name' => ['required', 'string', 'max:255'], 'email' => ['string', 'email', 'max:255', 'unique:users'], 'password' => ['required', 'string', 'min:8', 'confirmed']]);
+     }
+     /**
+      * Create a new user instance after a valid registration.
+
+
+9) /data/webapp/app/Http/Controllers/Auth/RegisterController.php:55    [M] ArrayItemRemoval
+
+--- Original
++++ New
+@@ @@
+      */
+     protected function validator(array $data)
+     {
+-        return Validator::make($data, ['name' => ['required', 'string', 'max:255'], 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'], 'password' => ['required', 'string', 'min:8', 'confirmed']]);
++        return Validator::make($data, ['name' => ['required', 'string', 'max:255'], 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'], 'password' => ['string', 'min:8', 'confirmed']]);
+     }
+     /**
+      * Create a new user instance after a valid registration.
+
+
+10) /data/webapp/app/Http/Controllers/Auth/RegisterController.php:65    [M] ProtectedVisibility
+
+--- Original
++++ New
+@@ @@
+      * @param  array  $data
+      * @return \App\User
+      */
+-    protected function create(array $data)
++    private function create(array $data)
+     {
+         return User::create(['name' => $data['name'], 'email' => $data['email'], 'password' => Hash::make($data['password'])]);
+     }
+ }
+
+11) /data/webapp/app/Http/Controllers/Auth/RegisterController.php:67    [M] ArrayItemRemoval
+
+--- Original
++++ New
+@@ @@
+      */
+     protected function create(array $data)
+     {
+-        return User::create(['name' => $data['name'], 'email' => $data['email'], 'password' => Hash::make($data['password'])]);
++        return User::create(['email' => $data['email'], 'password' => Hash::make($data['password'])]);
+     }
+ }
+
+
+12) /data/webapp/app/Http/Controllers/Auth/VerificationController.php:38    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+      */
+     public function __construct()
+     {
+-        $this->middleware('auth');
++        
+         $this->middleware('signed')->only('verify');
+         $this->middleware('throttle:6,1')->only('verify', 'resend');
+     }
+ }
+
+13) /data/webapp/app/Http/Controllers/Auth/VerificationController.php:39    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+     public function __construct()
+     {
+         $this->middleware('auth');
+-        $this->middleware('signed')->only('verify');
++        
+         $this->middleware('throttle:6,1')->only('verify', 'resend');
+     }
+ }
+
+
+14) /data/webapp/app/Http/Controllers/Auth/VerificationController.php:40    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+     {
+         $this->middleware('auth');
+         $this->middleware('signed')->only('verify');
+-        $this->middleware('throttle:6,1')->only('verify', 'resend');
++        
+     }
+ }
+
+
+15) /data/webapp/app/Http/Middleware/Authenticate.php:17    [M] LogicalNot
+
+--- Original
++++ New
+@@ @@
+      */
+     protected function redirectTo($request)
+     {
+-        if (!$request->expectsJson()) {
++        if ($request->expectsJson()) {
+             return route('login');
+         }
+     }
+ }
+
+16) /data/webapp/app/Http/Middleware/Authenticate.php:18    [M] FunctionCall
+
+--- Original
++++ New
+@@ @@
+     protected function redirectTo($request)
+     {
+         if (!$request->expectsJson()) {
+-            return route('login');
++            route('login');
++            return null;
+         }
+     }
+ }
+
+17) /data/webapp/app/Http/Middleware/RedirectIfAuthenticated.php:19    [M] PublicVisibility
+
+--- Original
++++ New
+@@ @@
+      * @param  string|null  $guard
+      * @return mixed
+      */
+-    public function handle($request, Closure $next, $guard = null)
++    protected function handle($request, Closure $next, $guard = null)
+     {
+         if (Auth::guard($guard)->check()) {
+             return redirect(RouteServiceProvider::HOME);
+
+
+18) /data/webapp/app/Http/Middleware/RedirectIfAuthenticated.php:22    [M] FunctionCall
+
+--- Original
++++ New
+@@ @@
+     public function handle($request, Closure $next, $guard = null)
+     {
+         if (Auth::guard($guard)->check()) {
+-            return redirect(RouteServiceProvider::HOME);
++            redirect(RouteServiceProvider::HOME);
++            return null;
+         }
+         return $next($request);
+     }
+
+19) /data/webapp/app/Http/Middleware/RedirectIfAuthenticated.php:25    [M] FunctionCall
+
+--- Original
++++ New
+@@ @@
+         if (Auth::guard($guard)->check()) {
+             return redirect(RouteServiceProvider::HOME);
+         }
+-        return $next($request);
++        $next($request);
++        return null;
+     }
+ }
+
+
+20) /data/webapp/app/Providers/BroadcastServiceProvider.php:15    [M] PublicVisibility
+
+--- Original
++++ New
+@@ @@
+      *
+      * @return void
+      */
+-    public function boot()
++    protected function boot()
+     {
+         Broadcast::routes();
+         require base_path('routes/channels.php');
+     }
+
+21) /data/webapp/app/Providers/BroadcastServiceProvider.php:17    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+      */
+     public function boot()
+     {
+-        Broadcast::routes();
++        
+         require base_path('routes/channels.php');
+     }
+ }

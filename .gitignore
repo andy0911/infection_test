@@ -1,0 +1,14 @@
+/test_works/node_modules
+/test_works/public/hot
+/test_works/public/storage
+/test_works/storage/*.key
+/test_works/vendor
+/test_works/.env
+/test_works/.env.backup
+/test_works/.phpunit.result.cache
+/test_works/Homestead.json
+/test_works/Homestead.yaml
+/test_works/npm-debug.log
+/test_works/yarn-error.log
+
+/docker
