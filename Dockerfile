@@ -25,4 +25,5 @@ RUN composer config -g repos.packagist composer https://packagist.jp && \
 COPY ./test_works /data/webapp
 WORKDIR /data/webapp
 ## inspectionの実行
+RUN composer install
 RUN vendor/bin/infection --min-msi=40 --threads=4
