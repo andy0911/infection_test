@@ -19,6 +19,7 @@ RUN apk --update add php-ctype
 RUN apk --update add php-mysqlnd
 RUN apk --update add php7-pdo_mysql
 RUN apk --update add php7-pecl-xdebug
+RUN apk --update add php7-pdo_sqlite
 RUN echo "zend_extension=xdebug.so" >> /etc/php7/php.ini
 RUN composer config -g repos.packagist composer https://packagist.jp && \
     composer global require hirak/prestissimo
